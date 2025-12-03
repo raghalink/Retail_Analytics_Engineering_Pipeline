@@ -1,3 +1,4 @@
+-- display count of each table and their rwo_count to confirm upload
 SELECT table_name,
        (xpath('/row/count/text()', xml_count))[1]::text::int AS row_count
 FROM (
