@@ -33,18 +33,3 @@ LIMIT 50;
 
 
 SELECT COUNT(*) FROM analytics.v_order_lines;
-
--- basket size view
-
-CREATE OR REPLACE VIEW instacart.v_order_basket_sizes 
-AS 
-WITH order_basket_sizes 
-AS (
-    SELECT
-        order_id,
-        COUNT(*) AS basket_size
-    FROM instacart.order_products
-    GROUP BY order_id
-)
-SELECT *
-FROM order_basket_sizes AS t;
