@@ -1,24 +1,30 @@
 -- ===================================================
 -- SECTION 1: Sanity & High-Level KPIs
 -- ===================================================
+-- Q1. Total volume snapshot
 
--- Q1. Total users, orders, order lines, products
+-- Total users
+SELECT COUNT(DISTINCT orders.user_id)  FROM instacart.orders;
 
+-- Total orders
+SELECT COUNT(*) FROM instacart.orders;
+
+-- Total order lines
+SELECT COUNT(*) FROM instacart.order_products;
+
+-- Total distinct products
+SELECT COUNT(DISTINCT product_id) FROM instacart.products;
+
+-- Q3. Row checks vs expectations
+
+-- How many distinct order_ids in orders vs in order_products?
 SELECT 
+(SELECT COUNT(*) FROM instacart.orders) AS 
+orders_ids_orders,
+(SELECT COUNT(DISTINCT order_id) FROM instacart.order_products) AS 
+orders_order_products;
 
--- Q2. eval_set distribution (prior/train/test)
--- Purpose: ...
-
--- Q3. Order_id consistency between orders and order_products
--- Purpose: ...
-
-
-
-
-
-
-
-
+-- Do they match as expected?
 -- ===================================================
 -- SECTION 2: Demand Over Time & Volume
 -- ===================================================
