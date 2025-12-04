@@ -9,7 +9,7 @@ CREATE SCHEMA IF NOT EXISTS analytics;
 
 -- Base orderline view (orders + order_products)
 
-CREATE OR REPLACE VIEW analytics.v_order_lines
+CREATE OR REPLACE VIEW instacart.v_order_lines
 AS
 SELECT 
 o.order_id,
@@ -28,11 +28,11 @@ JOIN instacart.order_products AS op
 
 -- Test the views and some checks  
 
-SELECT * FROM analytics.v_order_lines
+SELECT * FROM instacart.v_order_lines
 LIMIT 50;
 
 
-SELECT COUNT(*) FROM analytics.v_order_lines;
+SELECT COUNT(*) FROM instacart.v_order_lines;
 
 -- basket size view
 
