@@ -123,7 +123,7 @@ FROM instacart.products AS p
 JOIN order_reorder_count t
   ON p.product_id = t.product_id
 ORDER BY reorder_rate DESC
--- LIMIT 20;
+LIMIT 20;
 
 
 -- Q12. Department reorder rates
@@ -147,7 +147,7 @@ FROM instacart.departments AS d
 JOIN department_reorder_stats AS t
   ON d.department_id = t.department_id
 ORDER BY reorder_rate_pct DESC
--- LIMIT 20;
+LIMIT 20;
 
 -- Q13. aisle reorder rates
 WITH aisle_reorder_stats AS (
@@ -170,7 +170,7 @@ FROM instacart.aisles AS a
 JOIN aisle_reorder_stats AS t
   ON a.aisle_id = t.aisle_id
 ORDER BY reorder_rate_pct DESC;
--- optional: LIMIT 20;
+ LIMIT 20;
 
 
 -- ===================================================
@@ -182,14 +182,71 @@ SELECT
 FROM instacart.v_order_basket_sizes;
 
 -- Q14. Basket size by DOW/hour
+-- Basket size by DOW
+WITH order_basket_sizes AS (
+    SELECT *
+    FROM instacart.v_order_basket_sizes
+)
+SELECT
+    o.order_dow,
+    ROUND(AVG(t.basket_size)::numeric, 2) AS avg_basket_size
+FROM instacart.orders AS o
+JOIN order_basket_sizes AS t
+  ON o.order_id = t.order_id
+GROUP BY o.order_dow
+ORDER BY o.order_dow;
 
--- Q15. Product pair co-occurrence
+-- Basket size by hour_of_day
+WITH order_basket_sizes AS (
+    SELECT *
+    FROM instacart.v_order_basket_sizes
+)
+SELECT
+    o.order_hour_of_day,
+    ROUND(AVG(t.basket_size)::numeric, 2) AS avg_basket_size
+FROM instacart.orders AS o
+JOIN order_basket_sizes AS t
+  ON o.order_id = t.order_id
+GROUP BY o.order_hour_of_day
+ORDER BY o.order_hour_of_day;
 
+-- Q15. Product pair co-occurrence by name 
+WITH product_pair AS (
+    SELECT
+        LEAST(a.product_id, b.product_id)    AS product_id_a,
+        GREATEST(a.product_id, b.product_id) AS product_id_b,
+        COUNT(*) AS order_count
+    FROM instacart.order_products AS a
+    JOIN instacart.order_products AS b
+      ON a.order_id = b.order_id
+     AND a.product_id < b.product_id
+    GROUP BY
+        LEAST(a.product_id, b.product_id),
+        GREATEST(a.product_id, b.product_id)
+)
+SELECT
+	p1.product_name,
+	p2.product_name,
+    t.order_count
+FROM product_pair AS t
+JOIN instacart.products AS p1
+ON t.product_id_a = p1.product_id
+JOIN instacart.products AS p2
+ON t.product_id_b = p2.product_id
+ORDER BY order_count DESC
+
+-- product pair co-occurrence by product names
 -- ===================================================
 -- SECTION 5: User Behavior & Lifecycle
 -- ===================================================
 -- Q16. Top customers by order count
+SELECT user_id,COUNT(*) AS order_count 
+FROM instacart.orders
+GROUP BY user_id
+ORDER BY order_count DESC
+LIMIT 20;
 -- Q17. Time between orders (median per user)
+
 -- Q18. Basket size vs order_number
 
 -- ===================================================
