@@ -210,7 +210,7 @@ JOIN order_basket_sizes AS t
 GROUP BY o.order_hour_of_day
 ORDER BY o.order_hour_of_day;
 
--- Q15. Product pair co-occurrence by name 
+-- Q15. Product pair co-occurrence by name (make materialized view load only once so efficient query speed)
 WITH product_pair AS (
     SELECT
         LEAST(a.product_id, b.product_id)    AS product_id_a,
@@ -235,7 +235,6 @@ JOIN instacart.products AS p2
 ON t.product_id_b = p2.product_id
 ORDER BY order_count DESC
 
--- product pair co-occurrence by product names
 -- ===================================================
 -- SECTION 5: User Behavior & Lifecycle
 -- ===================================================
@@ -245,7 +244,14 @@ FROM instacart.orders
 GROUP BY user_id
 ORDER BY order_count DESC
 LIMIT 20;
+
 -- Q17. Time between orders (median per user)
+SELECT user_id, percentile_disc(0.5) WITHIN GROUP (ORDER BY days_since_prior_order) AS time_between_orders
+FROM instacart.orders 
+WHERE days_since_prior_order IS NOT NULL
+GROUP BY user_id 
+ORDER BY time_between_orders DESC;
+
 
 -- Q18. Basket size vs order_number
 
