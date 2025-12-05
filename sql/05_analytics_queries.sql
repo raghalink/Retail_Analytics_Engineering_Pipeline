@@ -176,6 +176,7 @@ ORDER BY reorder_rate_pct DESC;
 -- ===================================================
 -- SECTION 4: Basket & Co-occurrence
 -- ===================================================
+
 -- Q13. Average basket size
 SELECT
     ROUND(AVG(basket_size)::numeric, 2) AS avg_basket_size
@@ -238,6 +239,7 @@ ORDER BY order_count DESC
 -- ===================================================
 -- SECTION 5: User Behavior & Lifecycle
 -- ===================================================
+
 -- Q16. Top customers by order count
 SELECT user_id,COUNT(*) AS order_count 
 FROM instacart.orders
@@ -252,11 +254,23 @@ WHERE days_since_prior_order IS NOT NULL
 GROUP BY user_id 
 ORDER BY time_between_orders DESC;
 
-
--- Q18. Basket size vs order_number
+-- Q18. Lifecycle KPIs(Basket size vs order_number) 
+SELECT order_number,ROUND(AVG(basket_size),2) AS avg_basket_size
+FROM instacart.orders AS o
+JOIN instacart.v_order_basket_sizes AS v
+ON o.order_id = v.order_id 
+GROUP BY order_number
+ORDER BY order_number ASC;
 
 -- ===================================================
 -- SECTION 6: Reorder Dynamics
 -- ===================================================
 -- Q19. Overall reorder ratio
+SELECT
+    ROUND(
+        100.0 * SUM(CASE WHEN reordered = 1 THEN 1 ELSE 0 END)
+        / COUNT(*),
+        2
+    ) AS overall_reorder_rate_pct
+FROM instacart.order_products;
 -- Q20. Next-order inclusion probability for products
