@@ -156,7 +156,7 @@ JOIN aisle_stats AS t
 ON a.aisle_id = t.aisle_id;
 
 -- test view 
-SELECT * FROM instacart.v_aisle_metrics
+SELECT * FROM instacart.v_aisle_metrics;
 
 
 /* =========================================================
@@ -184,7 +184,7 @@ GROUP BY o.order_dow
 ORDER BY o.order_dow;
 
 -- test view 
-SELECT * FROM instacart.v_basket_size_by_dow
+SELECT * FROM instacart.v_basket_size_by_dow;
 
 
 -- Q14. Basket size by hour_of_day
@@ -203,7 +203,7 @@ GROUP BY o.order_hour_of_day
 ORDER BY o.order_hour_of_day;
 
 -- test view 
-SELECT * FROM instacart.v_basket_size_by_hour
+SELECT * FROM instacart.v_basket_size_by_hour;
 
 -- Q15. Product pair co-occurrence (by product_id and names)
 CREATE OR REPLACE VIEW instacart.v_product_pair_cooccurrence AS
@@ -234,7 +234,7 @@ ON t.product_id_b = p2.product_id
 ORDER BY t.order_count DESC;
 
 -- test view 
-SELECT * FROM instacart.v_product_pair_cooccurrence
+SELECT * FROM instacart.v_product_pair_cooccurrence;
 
 /* =========================================================
    5. USER BEHAVIOR & LIFECYCLE
@@ -261,7 +261,7 @@ GROUP BY user_id
 ORDER BY median_days_between_orders DESC;
 
 -- test view 
-SELECT * FROM instacart.v_user_median_order_gap,
+SELECT * FROM instacart.v_user_median_order_gap;
 
 -- Q18. Basket size vs order_number (lifecycle KPI)
 CREATE OR REPLACE VIEW instacart.v_lifecycle_basket_size AS
@@ -274,7 +274,7 @@ ON o.order_id = v.order_id
 GROUP BY o.order_number
 ORDER BY o.order_number ASC;
 -- test view 
-SELECT * FROM instacart.v_lifecycle_basket_size
+SELECT * FROM instacart.v_lifecycle_basket_size;
 
 
 /* =========================================================
