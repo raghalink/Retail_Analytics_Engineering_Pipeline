@@ -211,7 +211,7 @@ JOIN order_basket_sizes AS t
 GROUP BY o.order_hour_of_day
 ORDER BY o.order_hour_of_day;
 
--- Q15. Product pair co-occurrence by name (make materialized view load only once so efficient query speed)
+-- Q15. Product pair co-occurrence by name
 WITH product_pair AS (
     SELECT
         LEAST(a.product_id, b.product_id)    AS product_id_a,
@@ -274,7 +274,7 @@ SELECT
     ) AS overall_reorder_rate_pct
 FROM instacart.order_products;
 
--- Q20. Next-order inclusion probability for products
+-- Q20. Next-order inclusion probability for products (make it view - reduce bi computing)
 WITH user_product_orders as 
 ( 
 SELECT user_id,product_id,order_number
