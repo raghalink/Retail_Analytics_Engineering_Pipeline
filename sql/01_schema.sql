@@ -36,7 +36,7 @@ CREATE TABLE orders(
 	order_hour_of_day         SMALLINT NOT NULL,
 	days_since_prior_order    SMALLINT,
 	CHECK (order_hour_of_day BETWEEN 0 AND 23),
-	CHECK (order_dow BETWEEN 1 AND 7)
+	CHECK (order_dow BETWEEN 0 AND 6)
 	);
 	
 CREATE TABLE order_products(
