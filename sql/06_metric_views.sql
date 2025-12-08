@@ -34,7 +34,7 @@ SELECT
      FROM instacart.v_order_basket_sizes) AS avg_basket_size,
 
     -- Overall reorder rate (% of order lines where reordered = TRUE)
-    (SELECT ROUND(100.0 * SUM(CASE WHEN reordered = 1 THEN 1 ELSE 0 END)::numeric/ COUNT(*),2)
+    (SELECT ROUND(SUM(CASE WHEN reordered = 1 THEN 1 ELSE 0 END)::numeric/ COUNT(*)::numeric,4)
      FROM instacart.order_products) AS overall_reorder_rate_pct;
 
 -- test view
@@ -205,33 +205,9 @@ ORDER BY o.order_hour_of_day;
 -- test view 
 SELECT * FROM instacart.v_basket_size_by_hour;
 
--- Q15. Product pair co-occurrence (by product_id and names)
+-- Q15. Product pair co-occurrence (by product_id and names) 
 CREATE OR REPLACE VIEW instacart.v_product_pair_cooccurrence AS
-WITH product_pair AS (
-SELECT
-LEAST(a.product_id, b.product_id)    AS product_id_a,
-GREATEST(a.product_id, b.product_id) AS product_id_b,
-COUNT(*) AS order_count
-FROM instacart.order_products AS a
-JOIN instacart.order_products AS b
-ON a.order_id = b.order_id
-AND a.product_id < b.product_id
-GROUP BY
-LEAST(a.product_id, b.product_id),
-GREATEST(a.product_id, b.product_id))
-
-SELECT
-p1.product_id   AS product_id_a,
-p1.product_name AS product_name_a,
-p2.product_id   AS product_id_b,
-p2.product_name AS product_name_b,
-t.order_count
-FROM product_pair AS t
-JOIN instacart.products AS p1
-ON t.product_id_a = p1.product_id
-JOIN instacart.products AS p2
-ON t.product_id_b = p2.product_id
-ORDER BY t.order_count DESC;
+SELECT * FROM instacart.mv_product_coocurrence;
 
 -- test view 
 SELECT * FROM instacart.v_product_pair_cooccurrence;
@@ -291,33 +267,8 @@ FROM instacart.order_products;
 SELECT * FROM instacart.v_overall_reorder_rate;
 
 -- Q20. Next-order inclusion probability (per product)
-CREATE OR REPLACE VIEW instacart.v_next_order_inclusion AS
-WITH user_product_orders AS (
-SELECT
-user_id,
-product_id,
-order_number
-FROM instacart.v_order_lines),
-next_order_match AS (
-SELECT
-a.product_id,
-CASE
-WHEN b.product_id IS NOT NULL THEN 1
-ELSE 0
-END AS bought_next
-FROM user_product_orders AS a
-LEFT JOIN user_product_orders AS b
-ON a.user_id = b.user_id
-AND a.product_id = b.product_id
-AND a.order_number + 1 = b.order_number)
-SELECT
-product_id,
-SUM(bought_next) AS repeat_buys,
-COUNT(*)         AS total_buys,
-ROUND((100.0 * SUM(bought_next)::numeric) / COUNT(*),2) AS next_order_inclusion_pct
-FROM next_order_match
-GROUP BY product_id
-ORDER BY next_order_inclusion_pct DESC;
+CREATE OR REPLACE VIEW instacart.v_next_order_inclusion_probability AS
+SELECT * FROM instacart.v_next_order_inclusion_probability;
 
 -- test view 
-SELECT * FROM instacart.v_next_order_inclusion;
+SELECT * FROM instacart.v_next_order_inclusion_probability;
