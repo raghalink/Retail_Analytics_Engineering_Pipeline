@@ -169,7 +169,7 @@ SELECT
 FROM instacart.aisles AS a
 JOIN aisle_reorder_stats AS t
   ON a.aisle_id = t.aisle_id
-ORDER BY reorder_rate_pct DESC;
+ORDER BY reorder_rate_pct DESC
  LIMIT 20;
 
 

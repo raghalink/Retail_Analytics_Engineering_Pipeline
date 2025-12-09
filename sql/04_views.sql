@@ -22,11 +22,8 @@ JOIN instacart.order_products AS op
 
 -- Test the views and some checks  
 
-SELECT * FROM instacart.v_order_lines
-LIMIT 50;
-
-
-SELECT COUNT(*) FROM instacart.v_order_lines;
+-- SELECT * FROM instacart.v_order_lines
+-- LIMIT 50;
 
 -- basket size view
 

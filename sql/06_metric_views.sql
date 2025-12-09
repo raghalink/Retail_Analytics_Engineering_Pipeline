@@ -38,7 +38,7 @@ SELECT
      FROM instacart.order_products) AS overall_reorder_rate_pct;
 
 -- test view
-SELECT * from instacart.v_orders_by_dow;
+-- SELECT * from instacart.v_orders_by_dow;
 
 /* =========================================================
    2. DEMAND OVER TIME
@@ -54,7 +54,7 @@ GROUP BY order_dow
 ORDER BY order_dow;
 
 -- test view
-SELECT * from instacart.v_orders_by_dow;
+-- SELECT * from instacart.v_orders_by_dow;
 
 -- Q5. Orders by hour
 CREATE OR REPLACE VIEW instacart.v_orders_by_hour AS
@@ -64,7 +64,7 @@ GROUP BY order_hour_of_day
 ORDER BY order_hour_of_day;
 
 --test view
-SELECT * FROM instacart.v_orders_by_hour;
+-- SELECT * FROM instacart.v_orders_by_hour;
 
 
 -- Q6. Weekly pattern: day-of-week x hour
@@ -77,7 +77,7 @@ GROUP BY order_dow, order_hour_of_day
 ORDER BY order_dow, hour_of_day;
 
 --test view 
-SELECT * FROM instacart.v_orders_dow_hour;
+-- SELECT * FROM instacart.v_orders_dow_hour;
 
 /* =========================================================
    3. PRODUCT & CATEGORY PERFORMANCE
@@ -104,8 +104,8 @@ JOIN order_reorder_count AS t
 ON p.product_id = t.product_id
 ;
 
---test view
-SELECT * FROM instacart.v_product_metrics;
+-- test view
+-- SELECT * FROM instacart.v_product_metrics;
 -- Department-level metrics (order_count, reorder_count, reorder_rate_pct)
 -- (Q9 + Q12 merged)
 
@@ -129,7 +129,7 @@ FROM instacart.departments AS d
 JOIN department_stats AS t
 ON d.department_id = t.department_id;
 
-SELECT * FROM instacart.v_department_metrics
+-- SELECT * FROM instacart.v_department_metrics
 
 
 -- Aisle-level metrics (order_count, reorder_count, reorder_rate_pct)
@@ -156,7 +156,7 @@ JOIN aisle_stats AS t
 ON a.aisle_id = t.aisle_id;
 
 -- test view 
-SELECT * FROM instacart.v_aisle_metrics;
+-- SELECT * FROM instacart.v_aisle_metrics;
 
 
 /* =========================================================
