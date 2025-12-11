@@ -17,7 +17,7 @@ To engineer a retail data warehouse and analytics pipeline—designing every lay
 
 ![pipeline](images/architecture.png)
 
-**(Insert your architecture diagram here)**
+
 
 ---
 
