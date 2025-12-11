@@ -1,7 +1,7 @@
 
 ---
 
-# 📦 Instacart Retail Data Warehouse & Analytics Engineering Pipeline
+# 📦 InstaCart Retail Data Warehouse & Analytics Engineering Pipeline
 
 **Built from scratch: PostgreSQL, SQL, dbt, and Power BI (DirectQuery on 3M+ rows).**
 
@@ -21,18 +21,21 @@ To engineer a retail data warehouse and analytics pipeline—designing every lay
 
 ## 📊 Dataset
 
-This project uses the public **Instacart Online Grocery Shopping 2017** dataset from Kaggle (3M+ rows of orders, products, and baskets).
+This project uses the public [Instacart Online Gorcery Analysis Dataset](https://www.kaggle.com/datasets/yasserh/instacart-online-grocery-basket-analysis-dataset)  dataset from Kaggle (3M+ rows of orders, products, and baskets).
 
 ---
 
 ## 🛠️ Tech Stack
 
 * **Python**: Data loading and preprocessing
+* **Python packages**: pandas,sqlalchemy,os
 * **PostgreSQL**: Data warehouse, schemas, indexing, materialized views,
 * **SQL**: Transformation logic, KPI calculations.
 * **dbt Core**: Staging, intermediate, and mart models
 * **Power BI**: DirectQuery dashboards on 3M+ rows
-* **Git**: Version control (~70 commits)
+* **Git**: Version control (~50 commits)
+* **Npgsql (.NET PostgreSQL Driver)**: for reliable and high-performance connection between PostgreSQL and Power BI, allowing to use DirectQuery for live dashboards 
+
 
 ---
 
@@ -136,8 +139,8 @@ Retail_Analytics_Engineering_Pipeline/
 │   └── 07_metric_views.sql
 │
 └── ETL_RUN_LOG.md
-´´´
 
+_____________________________________________-
 ---
 
 ## 📝 How to Run Locally
