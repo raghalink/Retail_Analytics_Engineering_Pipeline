@@ -47,7 +47,7 @@ Manually designed schemas, implemented primary/foreign keys, and created materia
 
 All business logic was crafted in SQL, including joins, KPIs, and aggregations. Optimized performance with indexing and materialized views before layering dbt on top.
 
-**(Insert index and materialized view screenshots here)**
+
 
 ---
 
@@ -55,8 +55,7 @@ All business logic was crafted in SQL, including joins, KPIs, and aggregations. 
 
 After validating SQL logic, all transformations were modeled in dbt. Developed staging, intermediate, and mart layers with full lineage documentation.
 
-**(Insert dbt lineage graph and model folder screenshots here)**
-
+![Lineal graph](images/dbt-lineal-graph.png)
 
 ---
 
@@ -96,5 +95,3 @@ Built a 3-page Power BI dashboard connected live via DirectQuery to handle 3M+ r
 Raga, Aspiring Analytics Engineer | Berlin, Germany
 
 ---
-
-This version is concise, highlights the manual engineering work, and is structured for a GitHub audience. Insert your screenshots in the marked spots, and you’re good to go!
