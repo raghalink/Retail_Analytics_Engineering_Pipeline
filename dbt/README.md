@@ -1,15 +1,84 @@
-Welcome to your new dbt project!
+# dbt Project Overview
 
-### Using the starter project
+This folder contains the dbt transformation layer for the **Retail Analytics Engineering Pipeline**.  
+All SQL logic validated in PostgreSQL is modeled here using a structured **staging → intermediate → marts** approach.
 
-Try running the following commands:
-- dbt run
-- dbt test
+---
+
+## 📁 Structure
+
+dbt/
+├── models/
+│ ├── staging/
+│ ├── intermediate/
+│ └── mart/
+├── dbt_project.yml
+└── sources.yml
 
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+---
+
+## 🧱 Staging Models (`stg_*`)
+
+The staging layer standardizes raw warehouse tables:
+
+- `stg_aisles.sql`
+- `stg_departments.sql`
+- `stg_orders.sql`
+- `stg_order_products.sql`
+- `stg_products.sql`
+
+**Purpose:**
+- Clean datatypes  
+- Rename columns  
+- Remove inconsistencies  
+- Prepare raw data for modeling  
+
+---
+
+## 🔄 Intermediate Models (`int_*`)
+
+Business logic built on top of staging:
+
+- `int_order_basket_sizes.sql`
+
+**Purpose:**
+- Join staging tables  
+- Create order-line and basket-level grains  
+- Reduce complexity before marts  
+
+---
+
+## 📊 Mart Models (`fct_*`, `agg_*`)
+
+Final analytics-ready models consumed by Power BI (DirectQuery):
+
+- `agg_orders_by_dow.sql`  
+- `agg_product_metrics.sql`  
+- `fct_orders_by_dow.sql`  
+- `fct_kpi_overview.sql`  
+
+**Purpose:**
+- High-level KPIs  
+- Aggregations for dashboards  
+- Clean, BI-ready tables  
+
+---
+
+## 🗺️ Lineage Graph (DAG)
+
+The dbt lineage graph provides a full view of the transformation flow.
+
+
+---
+
+## ✅ Summary
+
+This dbt project demonstrates:
+
+- Clean separation of staging, intermediate, and mart layers  
+- Consistent naming conventions  
+- Maintainable SQL modeling  
+- A realistic analytics engineering workflow  
+
+
