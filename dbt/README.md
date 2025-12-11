@@ -1,4 +1,4 @@
-# dbt Project Overview
+# dbt Overview
 
 This folder contains the dbt transformation layer for the **Retail Analytics Engineering Pipeline**.  
 All SQL logic validated in PostgreSQL is modeled here using a structured **staging → intermediate → marts** approach.
