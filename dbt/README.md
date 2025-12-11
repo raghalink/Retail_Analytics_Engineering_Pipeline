@@ -67,8 +67,7 @@ Final analytics-ready models consumed by Power BI (DirectQuery):
 
 ## 🗺️ Lineage Graph (DAG)
 
-The dbt lineage graph provides a full view of the transformation flow.
-
+![dbt lineage graph](images/dbt_graph.png)
 
 ---
 

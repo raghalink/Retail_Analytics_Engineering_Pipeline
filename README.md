@@ -72,6 +72,7 @@ Built a 3-page Power BI dashboard connected live via DirectQuery to handle 3M+ r
 
 ## 📂 Repository Structure
 
+```text
 Retail_Analytics_Engineering_Pipeline/
 ├── dashboards/
 │   ├── dashboard.pbix
