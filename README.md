@@ -39,7 +39,8 @@ Raw CSVs → Python ETL → PostgreSQL (raw schema,indexing and analytics) → S
 Engineered a complete warehouse architecture in PostgreSQL with raw, staging, intermediate, and mart layers.
 Manually designed schemas, implemented primary/foreign keys, and created materialized views for performance.
 
-**(Insert schema diagram and folder structure screenshots here)**
+![Schema](images/schema.png)
+![views and mvs](images/views_and_mvs.png)
 
 ---
 
@@ -47,23 +48,25 @@ Manually designed schemas, implemented primary/foreign keys, and created materia
 
 All business logic was crafted in SQL, including joins, KPIs, and aggregations. Optimized performance with indexing and materialized views before layering dbt on top.
 
-
-
 ---
 
 ## 🧱 3. dbt Modeling
 
 After validating SQL logic, all transformations were modeled in dbt. Developed staging, intermediate, and mart layers with full lineage documentation.
 
-![Lineal graph](images/dbt-lineal-graph.png)
+![Lineal dbt graph](images/dbt_graph.png)
+
+
 
 ---
 
 ## 📊 4. Power BI Dashboard (DirectQuery)
 
-Built a 3-page Power BI dashboard connected live via DirectQuery to handle 3M+ rows in real-time. Showcased order KPIs, product insights, and user behavior without import mode.
+Built a 3-page Power BI dashboard connected live via DirectQuery to handle 3M+ rows in real-time. Showcased order KPIs, product insights, and user behavior without import mode. performance analyzing log can be found in images section.
 
-**(Insert full dashboard and key visuals screenshots here)**
+![dashboard_pg_1](dashboards/dashboard_1.png)
+![dashboard_pg_2](dashboards/dashboard_2.png)
+![dashboard_pg_3](dashboards/dashboard_3.png)
 
 ---
 
