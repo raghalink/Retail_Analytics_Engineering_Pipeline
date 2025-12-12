@@ -162,6 +162,6 @@ _____________________________________________-
 
 ## 👤 Author
 
-Raga, Aspiring Analytics Engineer | Berlin, Germany
+Raga, Junior Analytics Engineer | Berlin, Germany
 
 ---
