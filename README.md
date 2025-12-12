@@ -51,7 +51,7 @@ Manually designed schemas, implemented primary/foreign keys, and created materia
 
 ## 🔄 2. SQL Transformations & Optimization
 
-All business logic was crafted in SQL, including joins, KPIs, and aggregations. Optimized performance with indexing and materialized views before layering dbt on top.
+All transformations and metric logic was implemented in SQL at the database level to ensure correctness, performance, and reuse across dbt models and BI.business logic was crafted in SQL, including joins, KPIs, and aggregations. Optimized performance with indexing and materialized views before layering dbt on top.
 
 ---
 
