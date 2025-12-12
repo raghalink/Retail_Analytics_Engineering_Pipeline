@@ -55,7 +55,7 @@ All transformation and metric logic was implemented in SQL at the database level
 
 ---
 
-## 🧱 3. dbt Modeling
+## 🧱 3. dbt Modeling (Exploration and Documentation layer)
 
 After validating core SQL logic at the database level, selected transformations were replicated and modeled in dbt to learn dbt workflows, layering patterns (staging → intermediate → marts), and lineage generation. The primary BI layer continued to consume optimized database views and materialized views via DirectQuery. Additional details are documented in dbt/README.md.
 
@@ -157,9 +157,10 @@ ______________________________________________
 
 ## 🔧 Future Improvements
 
+* Expand dbt coverage to fully productionize transformations currently implemented as database views
 * Add dbt tests (uniqueness, relationships)
-* Deploy dbt to a scheduler like Airflow
-* Add incremental models for larger datasets
+* Deploy dbt using a scheduler such as Airflow
+* Introduce incremental models for larger-scale datasets
 
 ---
 
