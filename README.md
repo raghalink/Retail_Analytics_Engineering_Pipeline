@@ -57,7 +57,7 @@ All transformations and metric logic was implemented in SQL at the database leve
 
 ## 🧱 3. dbt Modeling
 
-dbt was introduced after validating core SQL logic to demonstrate how existing transformations can be productionized into a maintainable, version-controlled modeling layer.Developed staging, intermediate, and mart layers with full lineage documentation.dbt/README.md for further references.
+After validating core SQL logic at the database level, selected transformations were replicated and modeled in dbt to understand dbt workflows, layering (staging → marts), and lineage generation. The primary BI layer continued to consume optimized database views and materialized views via DirectQueryDeveloped staging, intermediate, and mart layers with full lineage documentation.dbt/README.md for further references.
 
 ![dbt lineage graph](images/dbt_graph.png)
 
@@ -65,7 +65,7 @@ dbt was introduced after validating core SQL logic to demonstrate how existing t
 
 ## 📊 4. Power BI Dashboard (DirectQuery)
 
-Built a 3-page Power BI dashboard connected live via DirectQuery to handle 3M+ rows in real-time. Showcased order KPIs, product insights, and user behavior without import mode. performance screenshots are available in images folder.
+The dashboard consumes only prepared views from postgre, avoiding complex DAX and keeping BI logic minimal.Built a 3-page Power BI dashboard connected live via DirectQuery to handle 3M+ rows in real-time. Showcased order KPIs, product insights, and user behavior without import mode. performance screenshots are available in images folder.
 
 ![dashboard_pg_1](dashboards/dashboard_1.png)
 ![dashboard_pg_2](dashboards/dashboard_2.png)
