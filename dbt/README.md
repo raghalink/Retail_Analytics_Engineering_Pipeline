@@ -6,7 +6,7 @@ All SQL logic validated in PostgreSQL is modeled here using a structured **stagi
 ---
 
 ## 📁 Structure
-
+```text
 dbt/
 ├── models/
 │ ├── staging/
@@ -14,7 +14,7 @@ dbt/
 │ └── mart/
 ├── dbt_project.yml
 └── sources.yml
-
+```
 
 ---
 
@@ -67,7 +67,7 @@ Final analytics-ready models consumed by Power BI (DirectQuery):
 
 ## 🗺️ Lineage Graph (DAG)
 
-![dbt lineage graph](images/dbt_graph.png)
+![dbt lineage graph](/images/dbt_graph.png)
 
 ---
 
