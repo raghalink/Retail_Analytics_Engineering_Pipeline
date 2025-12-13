@@ -21,6 +21,8 @@ After validating and optimizing SQL logic at the database layer, dbt was introdu
 
 ![pipeline](images/architecture.png)
 
+The pipeline follows a database-first analytics engineering approach. Transformation logic and KPIs were first implemented and optimized as SQL views and materialized views in PostgreSQL to ensure correctness and performance. Power BI consumes these views directly using DirectQuery. dbt was later introduced to replicate selected transformations, apply staging/intermediate/mart modeling patterns, and generate lineage documentation without disrupting the primary BI layer.
+
 ---
 
 ## 📊 Dataset
