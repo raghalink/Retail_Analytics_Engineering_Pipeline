@@ -28,7 +28,7 @@ Key focus areas:
 - Balancing speed, accuracy, and performance to enable timely insights
 - Structuring analytics outputs so they can be easily explained, trusted, and acted upon
 
-The technical implementation (SQL views, materialized views, dbt models) serves the primary goal of enabling reliable analysis and better business decisions, rather than showcasing tools in isolation.
+The technical implementation (SQL views, materialized views, dbt models) serves the primary goal of enabling reliable analysis and better business decisions, rather than showcasing tools in isolation
 
 ___
 
