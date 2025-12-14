@@ -17,6 +17,21 @@ After validating and optimizing SQL logic at the database layer, dbt was introdu
 
 ---
 
+## 📈 Business Focus & Decision Support
+
+This project was designed to simulate how cross-functional business teams consume analytics in practice.
+
+Key focus areas:
+- Translating business questions into clear, decision-oriented KPIs
+- Ensuring data clarity, consistency, and metric reliability across reports
+- Delivering stakeholder-ready dashboards that support operational and strategic decision-making
+- Balancing speed, accuracy, and performance to enable timely insights
+- Structuring analytics outputs so they can be easily explained, trusted, and acted upon
+
+The technical implementation (SQL views, materialized views, dbt models) serves the primary goal of enabling reliable analysis and better business decisions, rather than showcasing tools in isolation.
+
+___
+
 ## 🏗️ Architecture Overview
 
 ![pipeline](images/architecture.png)
