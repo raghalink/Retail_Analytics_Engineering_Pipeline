@@ -40,7 +40,7 @@ ___
 * **SQL**: Transformation logic, KPI calculations.
 * **dbt Core**: Staging, intermediate, and mart models
 * **Power BI**: DirectQuery dashboards on 3M+ rows
-* **Git**: Version control (~50 commits)
+* **Git**: Version control (~50 commits,incremental developement)
 * **Npgsql (.NET PostgreSQL Driver)**: for reliable and high-performance connection between PostgreSQL and Power BI, allowing to use DirectQuery for live dashboards 
 
 ___
