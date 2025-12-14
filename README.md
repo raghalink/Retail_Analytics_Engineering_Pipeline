@@ -32,20 +32,6 @@ The technical implementation (SQL views, materialized views, dbt models) serves 
 
 ___
 
-## 🏗️ Architecture Overview
-
-![pipeline](images/architecture.png)
-
-The pipeline follows a database-first analytics engineering approach. Transformation logic and KPIs were first implemented and optimized as SQL views and materialized views in PostgreSQL to ensure correctness and performance. Power BI consumes these views directly using DirectQuery. dbt was later introduced to replicate selected transformations, apply staging/intermediate/mart modeling patterns, and generate lineage documentation without disrupting the primary BI layer.
-
----
-
-## 📊 Dataset
-
-This project uses the public [Instacart Online Gorcery Analysis Dataset](https://www.kaggle.com/datasets/yasserh/instacart-online-grocery-basket-analysis-dataset) dataset from Kaggle (3M+ rows of orders,products,order_products,aisles,department).
-
----
-
 ## 🛠️ Tech Stack
 
 * **Python**: Data loading and preprocessing
@@ -57,6 +43,19 @@ This project uses the public [Instacart Online Gorcery Analysis Dataset](https:/
 * **Git**: Version control (~50 commits)
 * **Npgsql (.NET PostgreSQL Driver)**: for reliable and high-performance connection between PostgreSQL and Power BI, allowing to use DirectQuery for live dashboards 
 
+___
+
+## 📊 Dataset
+
+This project uses the public [Instacart Online Gorcery Analysis Dataset](https://www.kaggle.com/datasets/yasserh/instacart-online-grocery-basket-analysis-dataset) dataset from Kaggle (3M+ rows of orders,products,order_products,aisles,department).
+
+___
+
+## 🏗️ Architecture Overview
+
+![pipeline](images/architecture.png)
+
+The pipeline follows a database-first analytics engineering approach. Transformation logic and KPIs were first implemented and optimized as SQL views and materialized views in PostgreSQL to ensure correctness and performance. Power BI consumes these views directly using DirectQuery. dbt was later introduced to replicate selected transformations, apply staging/intermediate/mart modeling patterns, and generate lineage documentation without disrupting the primary BI layer.
 
 ---
 
