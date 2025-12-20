@@ -1,5 +1,10 @@
-# Ignore raw data
+# Ignore data files
 data_raw/
+*.csv
+*.xlsx
+*.parquet
+
+data_clean/
 *.csv
 *.xlsx
 *.parquet
