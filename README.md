@@ -1,7 +1,7 @@
 
 ---
 
-# 📦 InstaCart Retail Data Warehouse & Analytics Engineering Pipeline
+# 📦 InstaCart Retail Analytics Engineering Pipeline
 
 **PostgreSQL-centric analytics warehouse with SQL semantic layer and Power BI DirectQuery (3M+ rows), plus dbt modeling for transformation documentation and lineage.**
 
