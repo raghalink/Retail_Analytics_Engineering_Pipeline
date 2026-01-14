@@ -3,23 +3,21 @@
 
 # 📦 InstaCart Retail Analytics Engineering Pipeline
 
-**PostgreSQL-centric analytics warehouse with SQL semantic layer and Power BI DirectQuery (3M+ rows), plus dbt modeling for transformation documentation and lineage.**
+**PostgreSQL-centric retail analytics pipeline with a SQL semantic layer and live Power BI dashboards (3M+ rows), complementary by dbt for modeling, documentation, and lineage.**
 
 
 ---
 
 ## 🚀 Project Objective
 
-To design and deliver a production-style retail analytics warehouse in PostgreSQL, implementing transformation logic as optimized SQL views and materialized views, and serving live Power BI dashboards via DirectQuery.
-After validating and optimizing SQL logic at the database layer, dbt was introduced to replicate and document selected transformations, demonstrate staging → intermediate → mart modeling patterns, and generate lineage documentation.
-
-> Note: The primary BI layer consumes PostgreSQL views (including materialized views wrapped as views). dbt models were built to learn and showcase analytics-engineering workflows, not to replace the SQL semantic layer.
+Design and deliver a production-style retail analytics warehouse using PostgreSQL as the primary transformation and semantic layer. Core business logic and KPIs are implemented as optimized SQL views and materialized views, and served to Power BI via DirectQuery for live, high-volume analysis.
+After validating correctness and performance at the database layer,dbt was introduced to replicate and document selected transformations, demonstrating staging -> intermediate -> mart modeling patterns, and generate lineage documentation without replacing the underlying SQL semantic layer.
 
 ---
 
 ## 📈 Business Focus & Decision Support
 
-This project was designed to simulate how cross-functional business teams consume analytics in practice.
+This project is designed to simulate how cross-functional business teams consume analytics in practice, with an emphasis on clarity, trust, and decision usability rather than tool-centric outputs.
 
 Key focus areas:
 - Translating business questions into clear, decision-oriented KPIs
@@ -28,9 +26,9 @@ Key focus areas:
 - Balancing speed, accuracy, and performance to enable timely insights
 - Structuring analytics outputs so they can be easily explained, trusted, and acted upon
 
-The technical implementation (SQL views, materialized views, dbt models) serves the primary goal of enabling reliable analysis and better business decisions, rather than showcasing tools in isolation
+The technical implementation serves the primary goal of enabling reliable analysis and better business decisions, rather than showcasing tools in isolation.
 
-___
+---
 
 ## 🛠️ Tech Stack
 
@@ -43,19 +41,20 @@ ___
 * **Git**: Version control (~50 commits,incremental developement)
 * **Npgsql (.NET PostgreSQL Driver)**: for reliable and high-performance connection between PostgreSQL and Power BI, allowing to use DirectQuery for live dashboards 
 
-___
+---
 
 ## 📊 Dataset
 
 This project uses the public [Instacart Online Gorcery Analysis Dataset](https://www.kaggle.com/datasets/yasserh/instacart-online-grocery-basket-analysis-dataset) dataset from Kaggle (3M+ rows of orders,products,order_products,aisles,department).
 
-___
+---
 
 ## 🏗️ Architecture Overview
 
 ![pipeline](images/architecture.png)
 
-The pipeline follows a database-first analytics engineering approach. Transformation logic and KPIs were first implemented and optimized as SQL views and materialized views in PostgreSQL to ensure correctness and performance. Power BI consumes these views directly using DirectQuery. dbt was later introduced to replicate selected transformations, apply staging/intermediate/mart modeling patterns, and generate lineage documentation without disrupting the primary BI layer.
+The pipeline follows a database-first analytics engineering approach. Transformation logic and KPIs are first implemented and optimized directly in PostgreSQL using SQL views and materialized views to ensure correctness and performance. 
+Power BI consumes these prepared views via DirectQuery,enabling live analysis over 3M+ rows. dbt is introduced afterwards to replicate selected transformations, apply layered modeling patterns, and generate lineage documentation without disrupting the primary BI consumption layer.
 
 ---
 
@@ -74,13 +73,14 @@ Materialized views were selectively wrapped into standard views to ensure compat
 
 ## 🔄 2. SQL Transformations & Optimization
 
-All transformation and metric logic was implemented in SQL at the database level to ensure correctness, performance, and reuse across downstream layers. Performance was optimized using indexing and materialized views before introducing dbt for transformation modeling.
+All transformation logic and KPI calculations are implemented directly in SQL at the database layer level to ensure correctness, performance, and reuse across downstream consumers. Performance is optimized using indexing strategies and materialized views before introducing dbt for transformation modeling and documentation.
 
 ---
 
 ## 🧱 3. dbt Modeling (Exploration and Documentation layer)
 
-After validating core SQL logic at the database level, selected transformations were replicated and modeled in dbt to learn dbt workflows, layering patterns (staging → intermediate → marts), and lineage generation. The primary BI layer continued to consume optimized database views and materialized views via DirectQuery. Additional details are documented in dbt/README.md.
+After validating core SQL logic at the database level, selected transformations were replicated and modeled in dbt to explore analytical engineering workflows, layering patterns (staging → intermediate → marts), and generate lineage documentation. 
+The primary BI layer continues to consume optimized PostgreSQL views and materialized views via DirectQuery. Additional details are documented in dbt/README.md.
 
 ![dbt lineage graph](images/dbt_graph.png)
 
@@ -88,7 +88,7 @@ After validating core SQL logic at the database level, selected transformations 
 
 ## 📊 4. Power BI Dashboard (DirectQuery)
 
-The dashboard consumes only prepared PostgreSQL views, avoiding complex DAX and keeping BI logic minimal. A 3-page Power BI dashboard is connected live via DirectQuery to handle 3M+ rows in real time.
+The Power BI dashboard consumes only prepared PostgreSQL views, keeping DAX minimal and business logic centralized in the database. The dashboard is connected live via DirectQuery and designed to handle 3M+ rows in real time.
 
 ![dashboard_pg_1](dashboards/dashboard_1.png)
 ![dashboard_pg_2](dashboards/dashboard_2.png)
@@ -190,6 +190,6 @@ ______________________________________________
 
 ## 👤 Author
 
-Raga, Junior Analytics Engineer | Berlin, Germany
+Raga, Junior Analytics Engineer (Analytics Engineering & BI) | Berlin, Germany
 
 ---
