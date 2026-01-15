@@ -9,7 +9,7 @@
 
 
 /* =========================================================
-   1. OVERVIEW KPI VIEW (single-row snapshot)
+   1. OVERVIEW KPIS
    ========================================================= */
 CREATE OR REPLACE VIEW instacart.v_kpi_overview AS
 SELECT
