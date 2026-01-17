@@ -179,15 +179,6 @@ ______________________________________________
 
 ---
 
-## 🔧 Future Improvements
-
-* Expand dbt coverage to fully productionize transformations currently implemented as database views
-* Add dbt tests (uniqueness, relationships)
-* Deploy dbt using a scheduler such as Airflow
-* Introduce incremental models for larger-scale datasets
-
----
-
 ## 👤 Author
 
 Raga, Junior Analytics Engineer (Analytics Engineering & BI) | Berlin, Germany
