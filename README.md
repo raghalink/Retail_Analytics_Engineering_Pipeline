@@ -181,6 +181,6 @@ ______________________________________________
 
 ## 👤 Author
 
-Raga, Junior Analytics Engineer (Analytics Engineering & BI) | Berlin, Germany
+Raga, (Analytics Engineering & BI) | Berlin, Germany
 
 ---
